@@ -10,3 +10,17 @@
 - 另外如果，使用“files 大法”仓库最好设为私有，否则你的配置信息，如宽带账号等会公开在网上。
 - 如果需要可以编写多个`workflows`文件对应`###.config`，开启多流程同时编译。
 - 在 Actions 页面选择Build OpenWrt，然后点击Run Workflow按钮，即可开始编译。（如果需要 SSH 连接则把SSH connection to Actions的值改为true)
+
+
+# OpenWrt云编译
+#### 大雕仓库 https://github.com/coolsnowwolf/lede
+
+### 把本仓库克隆到自己的仓库里
+#### 打开下面链接生成.config配置文件
+#### [https://hackyes.github.io/openwrt-menuconfig/index.html](https://hackyes.github.io/openwrt-menuconfig/index.html)
+
+#### 编辑 .config 文件，把内容清空替换成上面链接生成的配置内容
+
+### 点这右上角 ✰Star  变成 ★Unstar 即可开始编译
+
+### 等待编译成功后，到Actions里下载固件即可
