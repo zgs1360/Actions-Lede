@@ -7,7 +7,7 @@
 # Blog: https://P3TERX.com
 #=================================================
 
-name: OpenWrt Builder
+name: OpenWrt Builder K2P
 
 on:
   repository_dispatch:
