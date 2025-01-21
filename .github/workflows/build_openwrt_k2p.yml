@@ -13,9 +13,17 @@ on:
   repository_dispatch:
   workflow_dispatch:
 
-  push:
-    branches:
-      - master
+  # 三种激活脚本方式
+  #修改提交时激活
+  #push:
+  #  branches:
+  #    - master
+  # 定时激活
+  #schedule:
+  #  - cron: 0 8 * * 5
+  #检测star被点击时激活
+  #watch:
+  #  types: [started]
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
