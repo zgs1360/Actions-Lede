@@ -6,7 +6,7 @@
 # Blog: https://P3TERX.com
 #=================================================
 
-name: OpenWrt Builder X86 64
+name: OpenWrt Builder X86_64
 
 on:
   repository_dispatch:
