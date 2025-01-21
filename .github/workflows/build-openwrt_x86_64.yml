@@ -6,7 +6,7 @@
 # Blog: https://P3TERX.com
 #=================================================
 
-name: OpenWrt Builder X86_64
+name: OpenWrt Builder
 
 on:
   repository_dispatch:
@@ -78,11 +78,6 @@ jobs:
       id: package
       run: |
         cd openwrt
-        # IPv6支持:
-        cat >> .config <<EOF
-        CONFIG_PACKAGE_dnsmasq_full_dhcpv6=y
-        CONFIG_PACKAGE_ipv6helper=y
-        EOF
         make defconfig
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
