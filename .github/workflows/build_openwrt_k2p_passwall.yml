@@ -90,17 +90,7 @@ jobs:
     - name: Download package
       id: package
       run: |
-        cd openwrt
-        # IPv6支持:
-        cat >> .config <<EOF
-        CONFIG_PACKAGE_dnsmasq_full_dhcpv6=y
-        CONFIG_PACKAGE_ipv6helper=y
-        EOF
-        # 取消编译VMware镜像以及镜像填充 (不要删除被缩进的注释符号):
-        cat >> .config <<EOF
-        # CONFIG_TARGET_IMAGES_PAD is not set
-        # CONFIG_VMDK_IMAGES is not set
-        EOF
+        cd openwrt        
         make defconfig
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
