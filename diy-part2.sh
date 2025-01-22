@@ -8,11 +8,11 @@
 # Blog: https://p3terx.com
 #============================================================
 
-# Modify default IP
-sed -i 's/192.168.1.1/192.168.1.11/g' package/base-files/files/bin/config_generate
+# 修改默认IP
+sed -i 's/192.168.1.1/192.168.2.123/g' package/base-files/files/bin/config_generate
 
-#2. Clear the login password
-sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/files/zzz-default-settings
+#2. 设置root密码为root
+sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF./root:$1$NHm9Sd0k$3.SLfxcsFdbFxofPDldWd0:20109:0:99999:7:::/g' package/lean/default-settings/files/zzz-default-settings
 
 #4. 最大连接数修改为65535
 sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
