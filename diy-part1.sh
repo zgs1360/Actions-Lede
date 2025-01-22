@@ -11,6 +11,8 @@
 
 # fw876/helloworld
 sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
+sed -i 's/^#\(.*coolsnowwolf\/luci\)/\1/' feeds.conf.default
+sed -i 's/^[^#]\(.*openwrt-23\.05\)/#&/g' feeds.conf.default
 
 # Add a feed source
 # echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
