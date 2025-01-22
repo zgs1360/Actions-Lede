@@ -16,3 +16,7 @@ sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF./root:$1$NHm9Sd0k$3.SLfxcsFdbFxofPDl
 
 #4. 最大连接数修改为65535
 sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
+
+#5. Enable 802.11 r
+sed -i 's/FtSupport=0/FtSupport=1/g' package/lean/mt/drivers/mt_wifi/files/mt7615.1.2G.dat
+sed -i 's/FtSupport=0/FtSupport=1/g' package/lean/mt/drivers/mt_wifi/files/mt7615.1.5G.dat
