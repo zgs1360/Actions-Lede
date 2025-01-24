@@ -1,4 +1,3 @@
-
 #!/bin/bash
 #=============================================================
 # https://github.com/Lancenas/Actions-Lean-OpenWrt
@@ -22,4 +21,4 @@ echo 'src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2.git;main'
 echo 'src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main' >> feeds.conf.default  
 
 # Add ddn-go
-echo 'src-git ddns-go https://github.com/sirpdboy/luci-app-ddns-go.git;main' >> feeds.conf.default
+git clone https://github.com/sirpdboy/luci-app-ddns-go.git package/ddns-go
