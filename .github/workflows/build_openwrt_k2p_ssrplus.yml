@@ -58,6 +58,8 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
+        Emoji=("🎉" "🤞" "✨" "🎁" "🎈" "🎄" "🎨" "💋" "🍓" "🍕" "🍉" "💐" "🌴" "🚀" "🛸" "🗽" "⛅" "🌈" "🔥" "⛄" "🐶" "🏅" "🦄" "🐤")
+        echo "EMOJI=${Emoji[$[$RANDOM % ${#Emoji[@]}]]}" >> $GITHUB_ENV
 
     - name: Clone source code
       working-directory: /workdir
@@ -90,7 +92,7 @@ jobs:
     - name: Download package
       id: package
       run: |
-        cd openwrt
+        cd openwrt        
         make defconfig
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
@@ -149,9 +151,18 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
+        name: ${{ steps.tag.outputs.release_tag }} ${{ env.DEVICE_NAME }} ${{ env.EMOJI }}
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
+        body: |
+          This is OpenWrt firmware for k2p
+          ### 📒 Firmware information
+          - ⚽ 固件源码: ${{ env.REPO_URL }}
+          - 💝 源码分支: ${{ env.REPO_BRANCH }}
+          - 🌐 Default IP: 192.168.2.123
+          - 🔑 Default username: root
+          - 🔑 Default password: password
 
     - name: Delete workflow runs
       uses: Mattraks/delete-workflow-runs@main
