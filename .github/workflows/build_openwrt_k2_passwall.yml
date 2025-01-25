@@ -7,7 +7,7 @@
 # Blog: https://P3TERX.com
 #=================================================
 
-name: OpenWrt Builder K2_passwall
+name: OpenWrt Builder K2 with passwall
 
 on:
   repository_dispatch:
