@@ -1,3 +1,4 @@
+
 #=================================================
 # https://github.com/Lancenas/Actions-Lean-OpenWrt
 # Description: Build OpenWrt using GitHub Actions
@@ -6,17 +7,28 @@
 # Blog: https://P3TERX.com
 #=================================================
 
-name: OpenWrt_Builder_86_64
-
+name: OpenWrt Builder K2 With x86_64
 on:
   repository_dispatch:
   workflow_dispatch:
+
+  # 三种激活脚本方式
+  #修改提交时激活
+  #push:
+  #  branches:
+  #    - master
+  # 定时激活
+  #schedule:
+  #  - cron: 0 8 * * 5
+  #检测star被点击时激活
+  #watch:
+  #  types: [started]
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: x86_64.config
+  CONFIG_FILE: k2_x86_64.config
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: false
@@ -45,6 +57,8 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
+        Emoji=("🎉" "🤞" "✨" "🎁" "🎈" "🎄" "🎨" "💋" "🍓" "🍕" "🍉" "💐" "🌴" "🚀" "🛸" "🗽" "⛅" "🌈" "🔥" "⛄" "🐶" "🏅" "🦄" "🐤")
+        echo "EMOJI=${Emoji[$[$RANDOM % ${#Emoji[@]}]]}" >> $GITHUB_ENV
 
     - name: Clone source code
       working-directory: /workdir
@@ -77,7 +91,7 @@ jobs:
     - name: Download package
       id: package
       run: |
-        cd openwrt
+        cd openwrt        
         make defconfig
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
@@ -125,7 +139,7 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        echo "release_tag=$(date +"%Y.%m.%d-%H%M")_x86_64" >> $GITHUB_OUTPUT
+        echo "release_tag=$(date +"%Y.%m.%d-%H%M")-x86_64" >> $GITHUB_OUTPUT
         touch release.txt
         [ ${UPLOAD_GOFILE} = true && ${{ steps.gofile.outputs.url }} ] && echo "🔗 [GoFile](${{ steps.gofile.outputs.url }})" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
@@ -136,9 +150,18 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
+        name: ${{ steps.tag.outputs.release_tag }} ${{ env.DEVICE_NAME }} ${{ env.EMOJI }}
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
+        body: |
+          This is OpenWrt firmware for k2p
+          ### 📒 Firmware information
+          - ⚽ 固件源码: ${{ env.REPO_URL }}
+          - 💝 源码分支: ${{ env.REPO_BRANCH }}
+          - 🌐 Default IP: 192.168.2.123
+          - 🔑 Default username: root
+          - 🔑 Default password: password
 
     - name: Delete workflow runs
       uses: Mattraks/delete-workflow-runs@main
