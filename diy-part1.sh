@@ -12,3 +12,7 @@ sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
 # Add istore
 echo 'src-git istore https://github.com/linkease/istore;main' >> feeds.conf.default
+
+# Add ddns_to
+echo 'src-git nas https://github.com/linkease/nas-packages.git;master' >> feeds.conf.default
+echo 'src-git nas_luci https://github.com/linkease/nas-packages-luci.git;main' >> feeds.conf.default
