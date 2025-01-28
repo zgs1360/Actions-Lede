@@ -23,4 +23,7 @@
 
 ### 点这右上角 ✰Star  变成 ★Unstar 即可开始编译
 
+# 加入ddnsto库文件
+http://fw.koolcenter.com/binary/ddnsto/ddnsto-binary-3.0.4.tar.gz
+
 ### 等待编译成功后，到Actions里下载固件即可
