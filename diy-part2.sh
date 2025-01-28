@@ -26,3 +26,5 @@ sed -i '/uci commit system/i\uci set system.@system[0].hostname='ZgsWrt'' packag
 
 # 加入编译者信息
 sed -i "s/OpenWrt /Zgs360 build $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" package/lean/default-settings/files/zzz-default-settings
+
+cp ../dl/* ./dl/
