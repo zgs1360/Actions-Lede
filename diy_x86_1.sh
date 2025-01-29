@@ -1,3 +1,4 @@
+#!/bin/bash
 # use ssr
 sed -i 's/^#\(.*coolsnowwolf\/luci\)/\1/' feeds.conf.default
 sed -i 's/^[^#]\(.*openwrt-23\.05\)/#&/g' feeds.conf.default
