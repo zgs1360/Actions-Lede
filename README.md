@@ -12,18 +12,3 @@
 - 在 Actions 页面选择Build OpenWrt，然后点击Run Workflow按钮，即可开始编译。（如果需要 SSH 连接则把SSH connection to Actions的值改为true)
 
 
-# OpenWrt云编译
-#### 大雕仓库 https://github.com/coolsnowwolf/lede
-
-### 把本仓库克隆到自己的仓库里
-#### 打开下面链接生成.config配置文件
-#### [https://hackyes.github.io/openwrt-menuconfig/index.html](https://hackyes.github.io/openwrt-menuconfig/index.html)
-
-#### 编辑 .config 文件，把内容清空替换成上面链接生成的配置内容
-
-### 点这右上角 ✰Star  变成 ★Unstar 即可开始编译
-
-# 加入ddnsto库文件
-http://fw.koolcenter.com/binary/ddnsto/ddnsto-binary-3.0.4.tar.gz
-
-### 等待编译成功后，到Actions里下载固件即可
