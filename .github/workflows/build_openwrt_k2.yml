@@ -7,7 +7,7 @@
 # Blog: https://P3TERX.com
 #=================================================
 
-name: OpenWrt Builder K2 With ssrpuls
+name: OpenWrt Builder K2
 on:
   repository_dispatch:
   workflow_dispatch:
