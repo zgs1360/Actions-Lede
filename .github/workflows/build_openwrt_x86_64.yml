@@ -155,11 +155,11 @@ jobs:
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
         body: |
-          This is OpenWrt firmware for k2p
+          This is OpenWrt firmware for x86
           ### 📒 Firmware information
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
-          - 🌐 Default IP: 192.168.2.123
+          - 🌐 Default IP: 192.168.1.1
           - 🔑 Default username: root
           - 🔑 Default password: password
 
