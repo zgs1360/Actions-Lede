@@ -156,7 +156,7 @@ jobs:
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
         body: |
-          This is OpenWrt firmware for k2p
+          This is OpenWrt firmware for k2p with passwall
           ### 📒 Firmware information
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
