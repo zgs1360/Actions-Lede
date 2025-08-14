@@ -21,8 +21,5 @@ sed -i 's/os.date()/os.date("%Y-%m-%d %H:%M:%S")/g' package/lean/autocore/files/
 sed -i 's/IMG_PREFIX:=/IMG_PREFIX:=$(BUILD_DATE_PREFIX)-/g' ./include/image.mk  
 sed -i '/DTS_DIR:=$(LINUX_DIR)/a\BUILD_DATE_PREFIX := $(shell date +'%F')' ./include/image.mk  
 
-# 修改默认主机名为MiyaWrt
-sed -i '/uci commit system/i\uci set system.@system[0].hostname='ZgsWrt'' package/lean/default-settings/files/zzz-default-settings
-
 # 加入编译者信息
 sed -i "s/OpenWrt /Zgs360 build $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" package/lean/default-settings/files/zzz-default-settings
